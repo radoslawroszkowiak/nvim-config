@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/FixCursorHold.nvim",
     url = "https://github.com/antoinemadec/FixCursorHold.nvim"
   },
+  ["coc-eslint"] = {
+    loaded = true,
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/coc-eslint",
+    url = "https://github.com/neoclide/coc-eslint"
+  },
   ["coc-tsserver"] = {
     loaded = true,
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/coc-tsserver",
@@ -98,6 +103,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/darcula-solid.nvim",
     url = "https://github.com/briones-gabriel/darcula-solid.nvim"
+  },
+  fzf = {
+    loaded = true,
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/fzf",
+    url = "https://github.com/junegunn/fzf"
+  },
+  ["fzf.vim"] = {
+    loaded = true,
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/fzf.vim",
+    url = "https://github.com/junegunn/fzf.vim"
   },
   ["gitsigns.nvim"] = {
     loaded = true,
@@ -119,6 +134,13 @@ _G.packer_plugins = {
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/lush.nvim",
     url = "https://github.com/rktjmp/lush.nvim"
   },
+  ["markdown-preview.nvim"] = {
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim",
+    url = "https://github.com/iamcco/markdown-preview.nvim"
+  },
   ["mason-nvim-dap.nvim"] = {
     loaded = true,
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/mason-nvim-dap.nvim",
@@ -128,6 +150,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  neoformat = {
+    loaded = true,
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/neoformat",
+    url = "https://github.com/sbdchd/neoformat"
   },
   neotest = {
     loaded = true,
@@ -178,6 +205,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/nvim-dap-vscode-js",
     url = "https://github.com/mxsdev/nvim-dap-vscode-js"
+  },
+  ["nvim-spectre"] = {
+    loaded = true,
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/nvim-spectre",
+    url = "https://github.com/nvim-pack/nvim-spectre"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -242,6 +274,17 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Setup for: markdown-preview.nvim
+time([[Setup for markdown-preview.nvim]], true)
+try_loadstring("\27LJ\2\n=\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\2\0\0\rmarkdown\19mkdp_filetypes\6g\bvim\0", "setup", "markdown-preview.nvim")
+time([[Setup for markdown-preview.nvim]], false)
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
+vim.cmd("augroup END")
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

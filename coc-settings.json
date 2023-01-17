@@ -3,6 +3,9 @@
   "codeLens.showReferences": true,
   "codeLens.position": "top",
   "callHierarchy.enableTooltip": true,
+  
+  "coc.preferences.hoverTarget":"float",
+  "suggest.floatEnable": true,
 
   "tsserver.enable": true,
   "tsserver.log": "normal",
@@ -22,7 +25,7 @@
   "typescript.inlayHints.variableTypes.enabled": true,
   "typescript.inlayHints.parameterNames.enabled": true,
   "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
-  "typescript.refererencesCodeLens.showOnAllProperties": true,
+  "typescript.referencesCodeLens.showOnAllProperties": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.suggest.autoImports": true,
   "typescript.preferences.includePackageJsonAutoImports": true,
@@ -49,7 +52,7 @@
   "javascript.referencesCodeLens.enabled": true,
   "javascript.referencesCodeLens.showOnAllFunctions": true,
   "javascript.referencesCodeLens.showOnAllMethods": true,
-  "javascript.refererencesCodeLens.showOnAllProperties": true,
+  "javascript.referencesCodeLens.showOnAllProperties": true,
   "javascript.implementationsCodeLens.enabled": true,
 
 

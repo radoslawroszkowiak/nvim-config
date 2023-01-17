@@ -4,7 +4,7 @@ vim.keymap.set("n", "\\", "<Nop>", { silent = true })
 local keymap = vim.keymap
 
 keymap.set('i', 'ii', '<Esc>', { noremap = true })
-keymap.set('n', '<esc>', ':noh<cr>')
+keymap.set('n', '<esc>', ':noh<cr>', { silent = true })
 
 -- New tab
 keymap.set('n', 'te', ':tabedit')
@@ -33,8 +33,8 @@ keymap.set("n", "<leader>gd", ":Gdiffsplit<CR>", { noremap = true, silent = true
 keymap.set("n", "<A-0>", ":Telescope coc workspace_diagnostics<CR>", { noremap = true, silent = true })
 
 -- Indentation
-keymap.set('v', '<Tab>', '>gv', { noremap = false })
-keymap.set('v', '<S-Tab>', '<gv', { noremap = false })
+keymap.set('v', '<C-]>', '>gv', { noremap = false, silent = true })
+keymap.set('v', '<C-[>', '<gv', { noremap = false, silent = true })
 
 
 local status, telescope = pcall(require, "telescope")
@@ -48,12 +48,12 @@ keymap.set('n', '<C-n>',
       hidden = true
     })
   end)
-keymap.set('n', '<C-f>', function()
+local spectre = require('spectre')
+keymap.set('n', '<A-r>', spectre.open)
+keymap.set('n', ';r', function()
   telescope_builtin.live_grep()
 end, { noremap = true })
-keymap.set('n', '\\\\', function()
-  telescope_builtin.buffers()
-end)
+keymap.set('n', '\\\\', ':Telescope coc workspace_symbols<CR>')
 keymap.set('n', ';t', function()
   telescope_builtin.help_tags()
 end)
