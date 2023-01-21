@@ -67,25 +67,25 @@ dapui.setup({
     toggle = "t",
   },
   -- Use this to override mappings for specific elements
-  expand_lines = vim.fn.has("nvim-0.7") == 1,
+  -- expand_lines = vim.fn.has("nvim-0.7") == 1,
+  expand_lines = false,
   layouts = {
     {
       elements = {
       -- Elements can be strings or table with id and size keys.
-        { id = "scopes", size = 0.25 },
+        { id = "scopes", size = 0.3 },
         "breakpoints",
         "stacks",
         "watches",
       },
-      size = 40, -- 40 columns
+      size = 45, -- 45 columns
       position = "right",
     },
     {
       elements = {
         "repl",
-        "console",
       },
-      size = 0.25, -- 25% of total lines
+      size = 0.2, -- 20% of total lines
       position = "bottom",
     },
   },
@@ -123,15 +123,21 @@ dap_virtual_text.setup({
 
 local function debugNpm(npmScriptName)
   print("starting debugging " .. npmScriptName)
+  local handle = io.popen('which yarn')
+  local path = handle:read('*a')
+  handle:close()
+
+  local trimmed_path = path:match("^%s*(.-)%s*$")
+
   dap.run({
       type = 'pwa-node',
       request = 'launch',
       cwd = vim.fn.getcwd(),
-      runtimeArgs = {'--inspect-brk', '/usr/local/bin/yarn', 'run', npmScriptName},
+      runtimeArgs = {'--inspect-brk', trimmed_path, 'run', npmScriptName},
       sourceMaps = true,
       protocol = 'inspector',
       skipFiles = {'<node_internals>/**/*.js'},
-      console = 'externalTerminal',
+      console = 'integratedTerminal',
       port = 9229,
       })
 end
@@ -165,8 +171,10 @@ end
 
 
 
+local neotest = require("neotest")
 dap.listeners.after.event_stopped["dapui_config"] = function()
   dapui.open()
+  neotest.summary.close()
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
   dapui.close()
@@ -175,24 +183,44 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
+local cmp = require('cmp')
+cmp.setup({
+  enabled = function()
+    return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
+        or require("cmp_dap").is_dap_buffer()
+  end
+})
 
--- require('dap').set_log_level('INFO')
+cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+  sources = {
+    { name = "dap" },
+  },
+})
+
+
 dap.defaults.fallback.terminal_win_cmd = '20split new'
-vim.fn.sign_define('DapBreakpoint',
-                   {text = '🟥', texthl = '', linehl = '', numhl = ''})
-vim.fn.sign_define('DapBreakpointRejected',
-                   {text = '🟦', texthl = '', linehl = '', numhl = ''})
-vim.fn.sign_define('DapStopped',
-                   {text = '⭐️', texthl = '', linehl = '', numhl = ''})
+
+vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg=0, fg='#993939', bg='#31353f' })
+vim.api.nvim_set_hl(0, 'DapLogPoint', { ctermbg=0, fg='#61afef', bg='#31353f' })
+vim.api.nvim_set_hl(0, 'DapStopped', { ctermbg=0, fg='#98c379', bg='#31353f' })
+
+vim.fn.sign_define('DapBreakpoint', { text='', texthl='DapBreakpoint', linehl='DapBreakpoint', numhl='DapBreakpoint' })
+vim.fn.sign_define('DapBreakpointCondition', { text='ﳁ', texthl='DapBreakpoint', linehl='DapBreakpoint', numhl='DapBreakpoint' })
+vim.fn.sign_define('DapBreakpointRejected', { text='', texthl='DapBreakpoint', linehl='DapBreakpoint', numhl= 'DapBreakpoint' })
+vim.fn.sign_define('DapLogPoint', { text='', texthl='DapLogPoint', linehl='DapLogPoint', numhl= 'DapLogPoint' })
+vim.fn.sign_define('DapStopped', { text='', texthl='DapStopped', linehl='DapStopped', numhl= 'DapStopped' })
 
 
-vim.keymap.set('n', '<leader>9', dap.continue)
-vim.keymap.set('n', '<leader>10', dap.step_over)
-vim.keymap.set('n', '<leader>7', dap.step_into)
-vim.keymap.set('n', '<leader>11', dap.step_out)
-vim.keymap.set('n', '<leader>]', dap.toggle_breakpoint)
-vim.keymap.set('n', '<leader>8', dap.repl.toggle)
+vim.keymap.set('n', '<leader>1', dap.continue)
+vim.keymap.set('n', '<leader>2', dap.step_over)
+vim.keymap.set('n', '<leader>3', dap.step_into)
+vim.keymap.set('n', '<leader>4', dap.step_out)
+vim.keymap.set('n', '<leader>rr', dap.repl.toggle)
+vim.keymap.set('n', '<leader>8', dap.toggle_breakpoint)
 vim.keymap.set('n', '<leader>d', dapui.toggle)
+
+vim.keymap.set('n', '<leader>e', ':lua require("dapui").eval()<CR>', { noremap = true })
+vim.keymap.set('v', '<leader>e', ':lua require("dapui").eval()<CR>', { noremap = true })
 
 vim.keymap.set('n', '<leader>db', attach)
 vim.keymap.set('n', '<leader>dB', attachToRemote)
@@ -200,18 +228,7 @@ vim.keymap.set('n', '<leader>dB', attachToRemote)
 vim.keymap.set('n', '<leader>55', function() 
     local scriptName = vim.fn.input('Run npm script: ', '')
     io.write('starting script... ', scriptName)
-    vim.api.nvim_command('split')
     debugNpm(scriptName)
-end
-)
-vim.keymap.set('n', '<leader>xx', function() 
-  vim.ui.select(
-    { 'start', 'test' },
-    { prompt = 'Debug npm script: '},
-    function(choice) 
-      io.write('starting test... ', choice)
-    end
-  )
 end
 )
 

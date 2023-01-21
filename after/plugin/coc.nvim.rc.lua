@@ -73,6 +73,7 @@ vim.api.nvim_create_autocmd("CursorHold", {
 
 -- Symbol renaming
 keyset("n", "<leader>rn", "<Plug>(coc-rename)", { silent = true })
+keyset("n", "<leader>rcf", ":<C-u>CocCommand workspace.renameCurrentFile<cr>", { silent = true })
 
 
 -- Formatting selected code
@@ -184,3 +185,10 @@ keyset("n", "<space>j", ":<C-u>CocNext<cr>", opts)
 keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
 -- Resume latest coc list
 keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
+
+keyset('n', '<C-p>', function()
+    vim.fn.CocActionAsync('showSignatureHelp')
+end, { silent = true, noremap = true })
+keyset('i', '<C-p>', function()
+    vim.fn.CocActionAsync('showSignatureHelp')
+end, { silent = true, noremap = true })

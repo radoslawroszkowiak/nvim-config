@@ -18,11 +18,17 @@ if (not status) then
 end
 
 packer.startup(function(use)
-  use { "briones-gabriel/darcula-solid.nvim", requires = "rktjmp/lush.nvim" }
-  vim.cmd 'colorscheme darcula-solid'
+  use 'olimorris/onedarkpro.nvim'
+  -- use { "ellisonleao/gruvbox.nvim" }
+  vim.cmd('colorscheme onedark')
+  --vim.cmd('colorscheme gruvbox')
+  use 'kyazdani42/nvim-web-devicons' -- File icons
+
 
   use 'wbthomason/packer.nvim'
   use 'nvim-lualine/lualine.nvim' -- Statusline
+
+  use 'mhinz/vim-startify' -- Start screen
 
   -- File explorer
   use {
@@ -32,11 +38,13 @@ packer.startup(function(use)
     }
   }
 
+  use 'akinsho/toggleterm.nvim'
+
   use 'williamboman/mason.nvim'
   -- use 'onsails/lspkind-nvim' -- vscode-like pictograms
   -- use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
   -- use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
-  -- use 'hrsh7th/nvim-cmp' -- Completion
+  use 'hrsh7th/nvim-cmp' -- Completion
   -- use 'neovim/nvim-lspconfig' -- LSP
   -- use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
 
@@ -44,13 +52,20 @@ packer.startup(function(use)
   -- use 'L3MON4D3/LuaSnip'
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    run = function()
+      require('nvim-treesitter.install').update({ with_sync = true })
+    end,
   }
-  use 'kyazdani42/nvim-web-devicons' -- File icons
-
+  use 'nvim-treesitter/nvim-treesitter-context'
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
 
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
+  use 'nvim-telescope/telescope-ui-select.nvim'
+  use 'nvim-telescope/telescope-node_modules.nvim'
+  use 'nvim-telescope/telescope-dap.nvim'
+  use 'nvim-telescope/telescope-live-grep-args.nvim'
+
   use 'fannheyward/telescope-coc.nvim' -- Coc integration for telescope
   use 'nvim-lua/plenary.nvim' -- Common utilities, need for telescope
   use 'antoinemadec/FixCursorHold.nvim'
@@ -64,6 +79,9 @@ packer.startup(function(use)
   }
   use 'norcalli/nvim-colorizer.lua'
   use 'folke/todo-comments.nvim' -- Highlight TODOs, FIXMEs, etc
+
+
+
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
     setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
@@ -73,7 +91,7 @@ packer.startup(function(use)
   use 'nvim-pack/nvim-spectre'
 
   use 'akinsho/nvim-bufferline.lua'
-  -- use 'github/copilot.vim'
+  use 'github/copilot.vim'
 
   use 'lewis6991/gitsigns.nvim'
   use 'kdheepak/lazygit.nvim'
@@ -85,6 +103,9 @@ packer.startup(function(use)
     branch = 'release'
   }
   use 'neoclide/coc-tsserver'
+  use 'neoclide/coc-css'
+  use 'neoclide/coc-html'
+  use 'neoclide/vim-jsx-improve'
 
   use {
     'nvim-neotest/neotest',
@@ -105,6 +126,7 @@ packer.startup(function(use)
       'rcarriga/nvim-dap-ui',
       'theHamsta/nvim-dap-virtual-text',
       'jayp0521/mason-nvim-dap.nvim',
+      'rcarriga/cmp-dap'
     }
   }
 end)

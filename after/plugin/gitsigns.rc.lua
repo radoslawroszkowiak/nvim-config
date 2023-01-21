@@ -42,4 +42,10 @@ gitsigns.setup {
   yadm = {
     enable = false
   },
+  on_attach = function(bufnr)
+    vim.keymap.set('n', '<leader>hS', gitsigns.stage_buffer)
+    vim.keymap.set('n', '<leader>hu', gitsigns.undo_stage_hunk)
+    vim.keymap.set('n', '<leader>hR', gitsigns.reset_buffer)
+    vim.keymap.set('n', '<leader>hp', gitsigns.preview_hunk)
+  end
 }

@@ -84,10 +84,20 @@ _G.packer_plugins = {
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/FixCursorHold.nvim",
     url = "https://github.com/antoinemadec/FixCursorHold.nvim"
   },
-  ["coc-eslint"] = {
+  ["cmp-dap"] = {
     loaded = true,
-    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/coc-eslint",
-    url = "https://github.com/neoclide/coc-eslint"
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/cmp-dap",
+    url = "https://github.com/rcarriga/cmp-dap"
+  },
+  ["coc-css"] = {
+    loaded = true,
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/coc-css",
+    url = "https://github.com/neoclide/coc-css"
+  },
+  ["coc-html"] = {
+    loaded = true,
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/coc-html",
+    url = "https://github.com/neoclide/coc-html"
   },
   ["coc-tsserver"] = {
     loaded = true,
@@ -99,10 +109,10 @@ _G.packer_plugins = {
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/coc.nvim",
     url = "https://github.com/neoclide/coc.nvim"
   },
-  ["darcula-solid.nvim"] = {
+  ["copilot.vim"] = {
     loaded = true,
-    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/darcula-solid.nvim",
-    url = "https://github.com/briones-gabriel/darcula-solid.nvim"
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    url = "https://github.com/github/copilot.vim"
   },
   fzf = {
     loaded = true,
@@ -128,11 +138,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
-  },
-  ["lush.nvim"] = {
-    loaded = true,
-    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/lush.nvim",
-    url = "https://github.com/rktjmp/lush.nvim"
   },
   ["markdown-preview.nvim"] = {
     loaded = false,
@@ -181,6 +186,11 @@ _G.packer_plugins = {
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua",
     url = "https://github.com/akinsho/nvim-bufferline.lua"
   },
+  ["nvim-cmp"] = {
+    loaded = true,
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
+  },
   ["nvim-colorizer.lua"] = {
     loaded = true,
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
@@ -221,6 +231,16 @@ _G.packer_plugins = {
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["nvim-treesitter-context"] = {
+    loaded = true,
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
+  },
+  ["nvim-treesitter-textobjects"] = {
+    loaded = true,
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
+  },
   ["nvim-ts-autotag"] = {
     loaded = true,
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
@@ -235,6 +255,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
+  },
+  ["onedarkpro.nvim"] = {
+    loaded = true,
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/onedarkpro.nvim",
+    url = "https://github.com/olimorris/onedarkpro.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -251,10 +276,30 @@ _G.packer_plugins = {
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/telescope-coc.nvim",
     url = "https://github.com/fannheyward/telescope-coc.nvim"
   },
+  ["telescope-dap.nvim"] = {
+    loaded = true,
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim",
+    url = "https://github.com/nvim-telescope/telescope-dap.nvim"
+  },
   ["telescope-file-browser.nvim"] = {
     loaded = true,
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
     url = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
+  },
+  ["telescope-live-grep-args.nvim"] = {
+    loaded = true,
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/telescope-live-grep-args.nvim",
+    url = "https://github.com/nvim-telescope/telescope-live-grep-args.nvim"
+  },
+  ["telescope-node_modules.nvim"] = {
+    loaded = true,
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/telescope-node_modules.nvim",
+    url = "https://github.com/nvim-telescope/telescope-node_modules.nvim"
+  },
+  ["telescope-ui-select.nvim"] = {
+    loaded = true,
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/telescope-ui-select.nvim",
+    url = "https://github.com/nvim-telescope/telescope-ui-select.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
@@ -266,10 +311,20 @@ _G.packer_plugins = {
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/todo-comments.nvim",
     url = "https://github.com/folke/todo-comments.nvim"
   },
+  ["toggleterm.nvim"] = {
+    loaded = true,
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
+    url = "https://github.com/akinsho/toggleterm.nvim"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-jsx-improve"] = {
+    loaded = true,
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/vim-jsx-improve",
+    url = "https://github.com/neoclide/vim-jsx-improve"
   }
 }
 

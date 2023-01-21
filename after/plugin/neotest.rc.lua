@@ -2,6 +2,19 @@ local status, neotest = pcall(require, "neotest")
 if (not status) then return end
 
 neotest.setup({
+  icons = {
+    expanded = "",
+    child_prefix = "",
+    child_indent = "",
+    final_child_prefix = "",
+    non_collapsible = "",
+    collapsed = "",
+
+    passed = "",
+    running = "",
+    failed = "",
+    unknown = ""
+  },
   adapters = {
     require('neotest-python')({
         -- Extra arguments for nvim-dap configuration
@@ -40,7 +53,7 @@ vim.keymap.set('n', '<leader>cc', function()
   neotest.run.run()
 end
 )
-vim.keymap.set('n', '<leader>ac', function()
+vim.keymap.set('n', '<leader>fc', function()
   neotest.summary.open()
   neotest.run.run(vim.fn.getcwd())
 end

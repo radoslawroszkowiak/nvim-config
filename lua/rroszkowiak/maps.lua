@@ -5,6 +5,10 @@ local keymap = vim.keymap
 
 keymap.set('i', 'ii', '<Esc>', { noremap = true })
 keymap.set('n', '<esc>', ':noh<cr>', { silent = true })
+keymap.set('v', '<esc>', '<C-c>', { silent = true })
+
+keymap.set('c', 'W', 'w', { noremap = true })
+keymap.set('c', 'Q', 'q', { noremap = true })
 
 -- New tab
 keymap.set('n', 'te', ':tabedit')
@@ -36,6 +40,10 @@ keymap.set("n", "<A-0>", ":Telescope coc workspace_diagnostics<CR>", { noremap =
 keymap.set('v', '<C-]>', '>gv', { noremap = false, silent = true })
 keymap.set('v', '<C-[>', '<gv', { noremap = false, silent = true })
 
+keymap.set("n", "<leader>qr", ":Telescope coc references<CR>", { noremap = true, silent = true })
+keymap.set("n", "<leader>qd", ":Telescope coc definitions<CR>", { noremap = true, silent = true })
+keymap.set("n", "<leader>q0", ":Telescope coc diagnostics<CR>", { noremap = true, silent = true })
+
 
 local status, telescope = pcall(require, "telescope")
 if (not status) then return end
@@ -51,7 +59,8 @@ keymap.set('n', '<C-n>',
 local spectre = require('spectre')
 keymap.set('n', '<A-r>', spectre.open)
 keymap.set('n', ';r', function()
-  telescope_builtin.live_grep()
+  -- telescope_builtin.live_grep()
+  telescope.extensions.live_grep_args.live_grep_args()
 end, { noremap = true })
 keymap.set('n', '\\\\', ':Telescope coc workspace_symbols<CR>')
 keymap.set('n', ';t', function()
@@ -74,6 +83,14 @@ keymap.set('n', '<A-s>', ':Git stash<cr>', {noremap = true})
 keymap.set('n', '<A-a>', ":Git blame<cr>", {noremap = true})
 keymap.set('n', '<A-f>', ":Neoformat<cr>", {noremap = true})
 keymap.set('v', '<A-f>', ":Neoformat<cr>", {noremap = true})
+keymap.set('n', '<A-t>', ":ToggleTerm direction=horizontal<cr>", {noremap = true})
+keymap.set('n', '<A-y>', ":ToggleTerm direction=float<cr>", {noremap = true})
+keymap.set('n', '<A-u>', ":ToggleTermToggleAll<cr>", {noremap = true})
+keymap.set('t', '<esc>', '<C-\\><C-n>', {noremap = true})
+keymap.set('t', '<A-t>', '<C-\\><C-n>:ToggleTerm<cr>', {noremap = true})
+keymap.set('t', '<A-y>', '<C-\\><C-n>:ToggleTerm direction=horizontal<cr>', {noremap = true})
+keymap.set('t', '<A-y>', '<C-\\><C-n>:ToggleTerm direction=float<cr>', {noremap = true})
+keymap.set('t', '<A-u>', '<C-\\><C-n>:ToggleTermToggleAll<cr>', {noremap = true})
 
 keymap.set('n', '<C-_>', '<Plug>(comment_toggle_linewise_current)', { silent = true, noremap = true })
 keymap.set('v', '<C-_>', '<Plug>(comment_toggle_linewise_visual)gv', { silent = true, noremap = true })

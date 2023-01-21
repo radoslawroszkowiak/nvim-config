@@ -1,15 +1,17 @@
 {
+  "suggest.noselect": false,
   "codeLens.enable": true,
   "codeLens.showReferences": true,
-  "codeLens.position": "top",
+  "codeLens.position": "right_align",
   "callHierarchy.enableTooltip": true,
   
   "coc.preferences.hoverTarget":"float",
-  "suggest.floatEnable": true,
+
+  "diagnostic.messageTarget": "float",
 
   "tsserver.enable": true,
   "tsserver.log": "normal",
-  "tsserver.maxTsServerMemory": 3072,
+  "tsserver.maxTsServerMemory": 6144,
   "tsserver.reportStyleChecksAsWarnings": true,
   "tsserver.useSyntaxServer": "auto",
   "tsserver.experimental.enableProjectDiagnostics": true,
@@ -54,10 +56,4 @@
   "javascript.referencesCodeLens.showOnAllMethods": true,
   "javascript.referencesCodeLens.showOnAllProperties": true,
   "javascript.implementationsCodeLens.enabled": true,
-
-
-
-
-
-
 }
