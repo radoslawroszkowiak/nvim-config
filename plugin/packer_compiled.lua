@@ -94,6 +94,11 @@ _G.packer_plugins = {
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/coc-css",
     url = "https://github.com/neoclide/coc-css"
   },
+  ["coc-eslint"] = {
+    loaded = true,
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/coc-eslint",
+    url = "https://github.com/neoclide/coc-eslint"
+  },
   ["coc-html"] = {
     loaded = true,
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/coc-html",
@@ -291,10 +296,10 @@ _G.packer_plugins = {
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/telescope-live-grep-args.nvim",
     url = "https://github.com/nvim-telescope/telescope-live-grep-args.nvim"
   },
-  ["telescope-node_modules.nvim"] = {
+  ["telescope-node-modules.nvim"] = {
     loaded = true,
-    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/telescope-node_modules.nvim",
-    url = "https://github.com/nvim-telescope/telescope-node_modules.nvim"
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/telescope-node-modules.nvim",
+    url = "https://github.com/nvim-telescope/telescope-node-modules.nvim"
   },
   ["telescope-ui-select.nvim"] = {
     loaded = true,
@@ -316,6 +321,11 @@ _G.packer_plugins = {
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
   },
+  undotree = {
+    loaded = true,
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/undotree",
+    url = "https://github.com/jiaoshijie/undotree"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/vim-fugitive",
@@ -325,6 +335,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/vim-jsx-improve",
     url = "https://github.com/neoclide/vim-jsx-improve"
+  },
+  ["vim-startify"] = {
+    loaded = true,
+    path = "/home/rroszkowiak/.local/share/nvim/site/pack/packer/start/vim-startify",
+    url = "https://github.com/mhinz/vim-startify"
   }
 }
 

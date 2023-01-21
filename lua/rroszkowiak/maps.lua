@@ -94,3 +94,6 @@ keymap.set('t', '<A-u>', '<C-\\><C-n>:ToggleTermToggleAll<cr>', {noremap = true}
 
 keymap.set('n', '<C-_>', '<Plug>(comment_toggle_linewise_current)', { silent = true, noremap = true })
 keymap.set('v', '<C-_>', '<Plug>(comment_toggle_linewise_visual)gv', { silent = true, noremap = true })
+
+-- Undotree
+keymap.set('n', '<leader>u', ':UndotreeToggle<cr>', { silent = true, noremap = true })

@@ -4,6 +4,7 @@
   "codeLens.showReferences": true,
   "codeLens.position": "right_align",
   "callHierarchy.enableTooltip": true,
+  "coc.preferences.floatActions": true,
   
   "coc.preferences.hoverTarget":"float",
 

@@ -59,10 +59,12 @@ packer.startup(function(use)
   use 'nvim-treesitter/nvim-treesitter-context'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
 
+  use 'lukas-reineke/indent-blankline.nvim'
+
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
   use 'nvim-telescope/telescope-ui-select.nvim'
-  use 'nvim-telescope/telescope-node_modules.nvim'
+  use 'nvim-telescope/telescope-node-modules.nvim'
   use 'nvim-telescope/telescope-dap.nvim'
   use 'nvim-telescope/telescope-live-grep-args.nvim'
 
@@ -117,6 +119,11 @@ packer.startup(function(use)
 
   use 'neoclide/coc-eslint'
   use 'sbdchd/neoformat'
+
+  -- undotree
+  use 'mbbill/undotree'
+
+  -- use 'jiaoshijie/undotree'
 
   -- Debugging
   use {
