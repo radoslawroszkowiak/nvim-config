@@ -3,6 +3,7 @@ if (not status) then return end
 local actions = require('telescope.actions')
 
 local fb_actions = require "telescope".extensions.file_browser.actions
+local lga_actions = require("telescope-live-grep-args.actions")
 
 telescope.setup {
   defaults = {
@@ -53,12 +54,26 @@ telescope.setup {
     },
     ['ui-select'] = {
       require('telescope.themes').get_dropdown {}
+    },
+    live_grep_args = {
+      auto_quoting = true, -- enable/disable auto-quoting
+      -- define mappings, e.g.
+      mappings = { -- extend mappings
+        i = {
+          ["<C-k>"] = lga_actions.quote_prompt(),
+          ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+        },
+      },
+      -- ... also accepts theme settings, for example:
+      -- theme = "dropdown", -- use dropdown theme
+      -- theme = { }, -- use own theme spec
+      -- layout_config = { mirror=true }, -- mirror preview pane
     }
   },
 }
 telescope.load_extension("coc")
 telescope.load_extension("file_browser")
 telescope.load_extension("ui-select")
--- telescope.load_extension("node_modules")
+telescope.load_extension("node_modules")
 telescope.load_extension("dap")
 telescope.load_extension("live_grep_args")
