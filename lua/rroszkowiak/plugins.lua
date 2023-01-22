@@ -79,6 +79,7 @@ packer.startup(function(use)
       'JoosepAlviste/nvim-ts-context-commentstring'
     }
   }
+  use 'karb94/neoscroll.nvim'
   use 'norcalli/nvim-colorizer.lua'
   use 'folke/todo-comments.nvim' -- Highlight TODOs, FIXMEs, etc
 
@@ -105,8 +106,12 @@ packer.startup(function(use)
     branch = 'release'
   }
   use 'neoclide/coc-tsserver'
+  use 'neoclide/coc-eslint'
   use 'neoclide/coc-css'
+  use 'neoclide/coc-json'
+  use 'neoclide/coc-yaml'
   use 'neoclide/coc-html'
+  use 'josa42/coc-lua'
   use 'neoclide/vim-jsx-improve'
 
   use {
@@ -117,7 +122,6 @@ packer.startup(function(use)
     }
   }
 
-  use 'neoclide/coc-eslint'
   use 'sbdchd/neoformat'
 
   -- undotree

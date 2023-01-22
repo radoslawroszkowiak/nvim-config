@@ -145,7 +145,7 @@ end
 local function attach()
   print("attaching")
   dap.run({
-      type = 'node2',
+      type = 'pwa-node',
       request = 'attach',
       cwd = vim.fn.getcwd(),
       sourceMaps = true,
@@ -157,7 +157,7 @@ end
 local function attachToRemote()
   print("attaching")
   dap.run({
-      type = 'node2',
+      type = 'pwa-node',
       request = 'attach',
       address = "127.0.0.1",
       port = 9229,
