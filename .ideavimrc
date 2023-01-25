@@ -1,0 +1,8 @@
+let mapleader = "\"
+set ignorecase
+set smartcase
+nmap <S-K> <Action>(QuickJavaDoc)
+nmap gd <Action>(GoToDeclaration)
+nmap <leader>qr <Action>(ShowUsages)
+nmap <leader>hi <Action>(HierarchyGroup)
+nmap <leader>e <Action>(ShowErrorDescription)
